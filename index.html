@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WS Translations converter</title>
+    <!-- Link to your CSS file (path relative to the 'public' folder) -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>WS TRANSLATIONS CONVERTER</h1>
+
+    <div class="controls-group">
+      <label for="languageSelect">Service:</label>
+      <select id="languageSelect">
+        <option value="en">English</option>
+        <option value="es">Mundo</option>
+        <option value="fr">Afrique (French)</option>
+        <!-- Add other languages as needed -->
+      </select>
+
+      <!-- CSV File Upload -->
+      <label for="csvFileInput" class="custom-file-upload">
+        Upload CSV File
+      </label>
+      <input type="file" id="csvFileInput" accept=".csv" />
+
+      <!-- TS File Upload -->
+      <label for="tsFileInput" class="custom-file-upload">
+        Upload TS File
+      </label>
+      <input type="file" id="tsFileInput" accept=".ts" />
+    </div>
+
+    <div id="outputDiv">
+      <!-- Output will appear here -->
+      Waiting for file...
+    </div>
+
+    <!-- You might add a script tag here later for JavaScript functionality -->
+    <!-- <script src="/script.js"></script> -->
+  </body>
+</html>

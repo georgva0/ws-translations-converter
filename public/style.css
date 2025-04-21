@@ -1,0 +1,232 @@
+/* Define reusable variables */
+:root {
+  --primary-color: rgb(184, 0, 0); /* Updated button background color */
+  --primary-hover-color: rgb(150, 0, 0); /* Updated button hover color */
+  --text-color: #333;
+  --border-color: #ccc;
+  --border-radius: 5px;
+  --padding-standard: 15px;
+  --padding-large: 20px;
+  --gap-standard: 15px;
+  --gap-large: 20px;
+  --font-size-base: 1rem; /* Define base font size if needed */
+  --font-size-large: 1.1rem; /* Define slightly larger size */
+}
+
+/* General body styling */
+body {
+  font-family: sans-serif;
+  padding: var(--padding-large);
+  max-width: 800px; /* Keep max-width for overall container */
+  margin: 20px auto; /* Centers the body container itself */
+  display: flex;
+  flex-direction: column;
+  /* Default alignment for mobile/smaller screens */
+  align-items: stretch; /* Stretch items like controls-group */
+  gap: var(--gap-large);
+  font-size: var(--font-size-base); /* Set base font size for body */
+}
+
+h1 {
+  color: var(--text-color);
+  margin-bottom: 10px;
+  text-align: center; /* Center text within the h1 block */
+  width: 100%; /* Ensure h1 takes width to allow text-align */
+}
+
+/* Style the controls group */
+.controls-group {
+  display: flex;
+  flex-direction: column; /* Default to column for smaller screens */
+  gap: var(--gap-standard);
+  width: 100%; /* Take full width by default */
+  align-items: stretch; /* Stretch items by default */
+}
+
+label {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+/* Specific label styling */
+label[for="languageSelect"] {
+  margin-right: 5px;
+}
+
+#languageSelect {
+  /* Increased right padding from 12px to 18px */
+  padding: 8px 18px 8px 12px; /* top right bottom left */
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  min-width: 150px;
+  box-sizing: border-box;
+  font-size: var(--font-size-large);
+  /* Inherits font-family from body */
+
+  /* Basic appearance reset for better consistency (optional) */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* Add custom arrow indicator if appearance is reset */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Adjust position as needed */
+  background-size: 0.65em auto; /* Adjust size as needed */
+  padding-right: 30px; /* Increase right padding significantly to accommodate custom arrow */
+}
+
+/* Style the custom file upload button */
+.custom-file-upload {
+  display: inline-block;
+  background-color: var(--primary-color); /* Uses the updated variable */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+  font-size: var(
+    --font-size-base
+  ); /* Match base font size or adjust as needed */
+}
+
+.custom-file-upload:hover {
+  background-color: var(
+    --primary-hover-color
+  ); /* Uses the updated hover variable */
+}
+
+/* Hide the actual file input */
+#csvFileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus style for accessibility */
+#csvFileInput:focus + .custom-file-upload {
+  outline: 2px solid dodgerblue;
+  outline-offset: 2px;
+}
+
+#outputDiv {
+  margin-top: var(--gap-large);
+  padding: var(--padding-standard);
+  border: 1px dashed var(--border-color);
+  min-height: 50px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  color: var(--text-color);
+}
+
+/* --- Responsive Styles --- */
+
+/* Base styles (mobile-first) cover screens up to 799px */
+@media (max-width: 799px) {
+  h1 {
+    text-align: center; /* Explicitly center on smaller screens */
+  }
+  /* Other mobile-specific adjustments if necessary */
+}
+
+/* Styles for medium screens and up (Tablet/Desktop) */
+@media (min-width: 800px) {
+  body {
+    align-items: flex-start;
+  }
+
+  h1 {
+    text-align: left;
+  }
+
+  .controls-group {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap-standard);
+    width: auto;
+  }
+
+  #languageSelect,
+  .custom-file-upload {
+    width: auto;
+  }
+
+  #languageSelect {
+    min-width: 150px;
+    /* Font size and padding are already set globally */
+  }
+
+  label[for="languageSelect"] {
+    margin-bottom: 0;
+    margin-right: 5px;
+  }
+}
+
+/* Optional: Refinements for very small screens */
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.3em;
+  }
+  body {
+    padding: 10px;
+    gap: 10px;
+  }
+  .controls-group {
+    gap: 10px;
+  }
+}
+/* In your style.css */
+
+input[type="file"] {
+  display: none; /* This hides the default browser input */
+}
+
+.custom-file-upload {
+  /* Your button styles go here */
+  display: inline-block; /* Or block */
+  padding: 8px 15px;
+  cursor: pointer;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* etc. */
+}
+
+.custom-file-upload:hover {
+  background-color: #ddd;
+}
+/* In your style.css */
+
+input[type="file"] {
+  display: none; /* Keep this to hide the default input */
+}
+
+.custom-file-upload {
+  /* Your button styles */
+  display: inline-block;
+  padding: 8px 15px;
+  cursor: pointer;
+  background-color: #b80000; /* Set the desired background color */
+  color: white; /* Added white text for better contrast on the red background */
+  border: 1px solid #8c0000; /* Optional: Adjust border to complement the background */
+  border-radius: 4px;
+  /* Add any other existing styles like font-size, margin, etc. */
+}
+
+.custom-file-upload:hover {
+  background-color: #9e0000; /* Optional: Define a slightly darker shade for hover */
+  border-color: #700000;
+}
+
+/* Make sure you adjust other styles (padding, border, hover state)
+   as needed to match your design preferences! */
